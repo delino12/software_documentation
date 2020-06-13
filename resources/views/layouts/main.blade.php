@@ -9,8 +9,13 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="css/page.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/page.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/content-tools.min.css') }}" rel="stylesheet"> --}}
+    {{-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/froala.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/codemirrow.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.datatable.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/alertify.min.css') }}" rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -25,12 +30,30 @@
   </head>
 
   <body>
+    <input type="hidden" id="token" value="{{ csrf_token() }}" name="">
     <style type="text/css">
         .header {
             background-image: url(img/bg-header.jpg);
             background-position: right bottom;
             height: 600px;
         }
+
+        .fr-toolbar {
+            border: none;
+        }
+
+        .fr-box.fr-basic .fr-wrapper {
+            border: none;
+        }
+
+        .second-toolbar {
+            border: none;
+        }
+
+        .second-toolbar a#logo {
+            display: none;
+        }
+        
     </style>
 
     <!-- Navbar -->
@@ -39,20 +62,29 @@
 
         <div class="navbar-left">
           <button class="navbar-toggler" type="button">&#9776;</button>
-          <a class="navbar-brand" href="../index.html">
-            <img class="logo-dark" src="img/logo.png" alt="logo" width="82" height="82">
-            <img class="logo-light" src="img/logo.png" alt="logo" width="82" height="82">
+          <a class="navbar-brand" href="/">
+            <img class="logo-dark" src="{{ asset('img/logo.png') }}" alt="logo" width="82" height="82">
+            <img class="logo-light" src="{{ asset('img/logo.png') }}" alt="logo" width="82" height="82">
           </a>
         </div>
 
-        <section class="navbar-mobile">
-          <ul class="nav nav-navbar">
-            
-          </ul>
-        </section>
+        @if(Auth::user())
+            <div class="navbar-right">
+                <a href="#" class="mr-5">
+                <i class="fa fa-user"></i> {{ Auth::user()->name }}
+            </a>
 
-        <a class="btn btn-sm btn-round btn-primary" href="" target="_blank">Get Started</a>
+            <a href="{{ route('logout') }}" class="mr-5"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+               <i class="fa fa-sign-out"></i> {{ __('Logout') }}
+            </a>
 
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            </div>
+        @endif
       </div>
     </nav><!-- /.navbar -->
 
@@ -65,23 +97,31 @@
 
                 <div class="col-md-9">
                     <div class="nav justify-content-center justify-content-md-start">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/">{{ date("Y") }} © Cavidel Limited</a>
                         <a class="nav-link" href="">Docs</a>
                         <a class="nav-link" href="">Changelog</a>
                     </div>
                 </div>
 
                 <div class="col-md-3 text-center text-md-right">
-                    <a href="/">© Cavidel Limited</a>
+                    
                 </div>
             </div>
         </div>
     </footer><!-- /.footer -->
 
-
     <!-- Scripts -->
-    <script src="js/page.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/page.min.js') }}"></script>
+    <script src="{{ asset('js/froala.min.js') }}"></script>
+    <script src="{{ asset('js/codemirrow.min.js') }}"></script>
+    <script src="{{ asset('js/codemirrow-xml.min.js') }}"></script>
+    <script src="{{ asset('js/page.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.datatable.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.datatable.js') }}"></script>
+    <script src="{{ asset('js/alertify.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/content-tools.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
     @yield('scripts')
   </body>
 </html>

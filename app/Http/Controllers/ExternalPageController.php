@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Documentation;
 
 class ExternalPageController extends Controller
 {
@@ -21,68 +22,19 @@ class ExternalPageController extends Controller
     | SHOW
     |-----------------------------------------
     */
-    public function getAllItem(Request $request){
+    public function loginScreen(Request $request){
     	// body
-    	
+        return view('auth.index');
     }
-    
+
     /*
     |-----------------------------------------
     | SHOW
     |-----------------------------------------
     */
-    public function addUpdateItem(Request $request){
-    	// body
-    	
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW
-    |-----------------------------------------
-    */
-    public function addOneItem(Request $request){
-    	// body
-    	
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW
-    |-----------------------------------------
-    */
-    public function deleteItem(Request $request){
-    	// body
-    	
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW
-    |-----------------------------------------
-    */
-    public function extra1(){
-    	// body
-    	
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW
-    |-----------------------------------------
-    */
-    public function extra2(){
-    	// body
-    	
-    }
-    
-    /*
-    |-----------------------------------------
-    | SHOW
-    |-----------------------------------------
-    */
-    public function extra3(){
-    	// body
-    	
+    public function project(Request $request){
+        // body
+        $documentation = Documentation::first();
+        return view('project.show', compact('documentation'));
     }
 }

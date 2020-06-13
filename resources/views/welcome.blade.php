@@ -12,7 +12,7 @@
                 <div class="col-lg-6">
                     <h1>Developer's Technical Support Center</h1>
                     <p class="lead mt-5 mb-8">Thinking about having an online documentation or support system for your startup? TheDocs have everythings you need to develop your own help center.</p>
-                    <p><a class="btn btn-lg btn-round btn-primary" href="" target="_blank">Documentation</a></p>
+                    <p><a class="btn btn-lg btn-round btn-primary" href="{{ url('document/create') }}" >Draft a Documentation</a></p>
                 </div>
 
                 <div class="col-lg-5 ml-auto d-none d-lg-block">
