@@ -1,13 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+@section('title')
+    Software Documentation 
+@endsection
 
-                <div class="card-body">
+@section('contents')
+    <!-- Header -->
+    <header class="header" style="background-image: linear-gradient(135deg, #f9f7ff 0%, #fff 50%, #f6f3ff 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <h1>Get back your account</h1>
+                    <p class="lead mt-5 mb-8">Thinking about having an online documentation or support system for your startup? Cavidel Software Documentation have everythings you need to develop your own help center.</p>
+                    
+                </div>
+
+                <div class="col-lg-8 ml-auto d-none d-lg-block">
                     {{ __('Please confirm your password before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
@@ -44,6 +52,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </header><!-- /.header -->
 @endsection

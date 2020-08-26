@@ -84,6 +84,15 @@
                 @csrf
             </form>
             </div>
+        @else
+            <div class="navbar-right">
+                <a href="{{ url('login') }}" class="mr-5">
+                    <i class="fa fa-lock"></i>  Log In           
+                </a>
+                <a href="{{ url('register') }}" class="mr-5 btn btn-outline-primary">
+                    <i class="fa fa-user"></i>  Get Started           
+                </a>
+            </div>
         @endif
       </div>
     </nav><!-- /.navbar -->
